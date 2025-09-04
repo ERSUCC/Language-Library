@@ -214,6 +214,14 @@ class Subprocess(ws: Workspace, proc: Process, socket: Socket, extensionName: St
 
   private val executor: ExecutorService = Executors.newSingleThreadExecutor()
 
+  // this ensures that the Subprocess exits if NetLogo is closed while an
+  // extension using the Language Library is loaded (Isaac B 9/4/25)
+  Runtime.getRuntime.addShutdownHook(new Thread {
+    override def run(): Unit = {
+      close()
+    }
+  })
+
   //---------------------------Public Methods--------------------------------
   /**
    * Send an "exec" commmand to the subproccess with the given statement
