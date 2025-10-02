@@ -8,15 +8,14 @@ scalacOptions        ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-
 Compile / scalaSource := baseDirectory.value / "src"
 
 resolvers ++= Seq(
-  "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/",
-  "jitpack" at "https://jitpack.io"
+  "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 )
 
 def cclArtifacts(path: String): String =
   s"https://s3.amazonaws.com/ccl-artifacts/$path"
 
 libraryDependencies ++= Seq(
-  "org.nlogo"          % "netlogo"        % "7.0.0-424b50b"
+  "org.nlogo"          % "netlogo"        % "7.0.0-2486d1e"
 , "org.json4s"        %% "json4s-jackson" % "4.0.7"
 // not used by this library, but needed for NetLogo
 , "org.jogamp.jogl" % "jogl-all" % "2.4.0" from cclArtifacts("jogl-all-2.4.0.jar")
