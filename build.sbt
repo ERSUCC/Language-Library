@@ -7,9 +7,7 @@ scalaVersion          := "3.7.0"
 scalacOptions        ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings", "-release", "17", "-Wunused:linted")
 Compile / scalaSource := baseDirectory.value / "src"
 
-resolvers ++= Seq(
-  "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
-)
+resolvers += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 
 def cclArtifacts(path: String): String =
   s"https://s3.amazonaws.com/ccl-artifacts/$path"
